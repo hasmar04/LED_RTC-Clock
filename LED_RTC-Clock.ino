@@ -186,7 +186,7 @@ void setup() {
   Serial.begin(9600);
 
   //initialize TimerOne's interrupt/CPU usage used to scan and refresh the display
-  Timer1.initialize(5000);          //period in microseconds to call ScanDMD. Anything longer than 5000 (5ms) and you can see flicker.
+  Timer1.initialize(4500);          //period in microseconds to call ScanDMD. Anything longer than 4999 (4.999ms) and you can see flicker.
   Timer1.attachInterrupt(ScanDMD);  //attach the Timer1 interrupt to ScanDMD which goes to dmd.scanDisplayBySPI()
   dmd.selectFont(SystemFont5x7);
 }
