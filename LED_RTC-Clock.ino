@@ -140,7 +140,7 @@ void funcRTC() {             //function that contains all RTC functions
 
   //Print the date and time output by the RTC
   RTCdate=leadingZero(String(RTC.getDate()))+'/'+leadingZero(String(RTC.getMonth(CentBit)));
-  Serial.println(RTCdate);
+  Serial.print(RTCdate+' ');
   RTCtime=leadingZero(String(RTC.getHour(hr,PM)))+':'+leadingZero(String(RTC.getMinute()));
   Serial.println(RTCtime);
   Array[0] = RTCdate;
