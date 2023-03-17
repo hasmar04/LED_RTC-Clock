@@ -14,12 +14,12 @@ SCLK - Latches the current content of the DMD shift registers
 R - The raw pixel data stream (NB: The 'R' stands for RED. You might notice an unused 'G' pin which is for
 Green on a HUB12 connector)
 --------
-nOE(D9) |1 2| A(D6)
-Gnd |3 4| B(D7)
-Gnd |5 6| C
-Gnd |6 8| CLK(D13)
-Gnd |7 10| SCLK(D8)
-Gnd |11 12| R(D11)
+nOE |1   2| A
+Gnd |3   4| B
+Gnd |5   6| C
+Gnd |6   8| CLK
+Gnd |7  10| SCLK
+Gnd |11 12| R
 Gnd |13 14| G
 Gnd |15 16| D
 --------------------------------------------------------------------------------*/
