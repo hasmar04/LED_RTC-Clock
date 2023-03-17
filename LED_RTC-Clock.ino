@@ -96,7 +96,14 @@ void getDateStuff(byte& year, byte& month, byte& date, byte& dOW, byte& hour, by
   second = temp1 * 10 + temp2;
 }
 
-String funcRTC() {             //function that contains all RTC functions
+String leadingZero(String num) { //function that adds a leading zero if the number is less than 10 i.e. string length is less than 2
+  if (num.length() < 2){
+    return String(0)+num;
+  }
+  return num;
+}
+
+void funcRTC() {             //function that contains all RTC functions
   if (Serial.available()) {  //if data is entered into the serial monitor, parse it as a time update
     getDateStuff(year, month, date, dOW, hour, minute, second);
 
@@ -132,9 +139,9 @@ String funcRTC() {             //function that contains all RTC functions
 
 
   //Print the date and time output by the RTC
-  RTCdate=/*String(RTC.getYear())+'/'+*/String(RTC.getMonth(CentBit))+'/'+String(RTC.getDate());
+  RTCdate=leadingZero(String(RTC.getDate()))+'/'+leadingZero(String(RTC.getMonth(CentBit)));
   Serial.println(RTCdate);
-  RTCtime=String(RTC.getHour(hr,PM))+':'+String(RTC.getMinute())/*+':'+String(RTC.getSecond())*/;
+  RTCtime=leadingZero(String(RTC.getHour(hr,PM)))+':'+leadingZero(String(RTC.getMinute()));
   Serial.println(RTCtime);
   Array[0] = RTCdate;
   Array[1] = RTCtime;
@@ -186,7 +193,6 @@ void setup() {
 
 void loop() {
   delay(1000);
-  //String RTC[] = funcRTC();
   funcRTC();
   dmd.clearScreen(true);
   center_theDisplay(Array[0],0);
