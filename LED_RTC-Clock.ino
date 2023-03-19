@@ -189,12 +189,20 @@ void setup() {
   Timer1.initialize(4500);          //period in microseconds to call ScanDMD. Anything longer than 4999 (4.999ms) and you can see flicker.
   Timer1.attachInterrupt(ScanDMD);  //attach the Timer1 interrupt to ScanDMD which goes to dmd.scanDisplayBySPI()
   dmd.selectFont(SystemFont5x7);
+
+  //Initial Display draw
+  funcRTC();
+  dmd.clearScreen(true);
+  center_theDisplay(Array[0],0);
+  center_theDisplay(Array[1],8);
 }
 
 void loop() {
   delay(1000);
   funcRTC();
-  dmd.clearScreen(true);
-  center_theDisplay(Array[0],0);
-  center_theDisplay(Array[1],8);
+  if (RTC.getSecond() == 0){
+    dmd.clearScreen(true);
+    center_theDisplay(Array[0],0);
+    center_theDisplay(Array[1],8);
+  }
 }
