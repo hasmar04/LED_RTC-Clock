@@ -1,6 +1,13 @@
 //LED_RTC-Clock by Harrison Asmar
 
 // To set the time, enter it into the serial monitor in the order YYMMDDwHHMMSS, with an 'x' at the end
+// YY -> Year
+// MM -> Month
+// DD -> Day
+// w -> Day of Week (Sunday is 0)
+// HH -> Hour (24hr)
+// MM -> Minute
+// SS -> Second
 
 //                  LED MATRIX
 /*-----------------------------------------------------------------------
