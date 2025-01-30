@@ -192,6 +192,16 @@ void setup() {
   Wire.begin();
   Serial.begin(9600);
 
+  //Inform user how to set the time
+  Serial.println("To set the time, enter it into the serial monitor in the order YYMMDDwHHMMSS, with an 'x' at the end");
+  Serial.println("YY -> Year");
+  Serial.println("MM -> Month");
+  Serial.println("DD -> Day");
+  Serial.println("w -> Day of Week (Sunday is 0)");
+  Serial.println("HH -> Hour (24hr)");
+  Serial.println("MM -> Minute");
+  Serial.println("SS -> Second");
+
   //initialize TimerOne's interrupt/CPU usage used to scan and refresh the display
   Timer1.initialize(4500);          //period in microseconds to call ScanDMD. Anything longer than 4999 (4.999ms) and you can see flicker.
   Timer1.attachInterrupt(ScanDMD);  //attach the Timer1 interrupt to ScanDMD which goes to dmd.scanDisplayBySPI()
